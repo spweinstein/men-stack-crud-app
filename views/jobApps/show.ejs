@@ -4,10 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <%- include('../partials/nav.ejs');%>
-    <h1><%= pageTitle %></h1>
+    <h1>Job Application</h1>
+    <% if(jobApp.url){ %>
+    <a href="<%= jobApp.url %>">Go To Application</a>
+    <% } %>
+    <ul>
+      <li>Company: <%= jobApp.company %></li>
+      <li>Job Title: <%= jobApp.title %></li>
+      <li>Status: <%= jobApp.status %></li>
+    </ul>
     <form action="/jobApps/<%=jobApp._id%>?_method=DELETE" method="POST">
       <button type="submit">Delete Application</button>
     </form>
