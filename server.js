@@ -5,6 +5,7 @@ const db = require("./db/connection");
 const path = require("path");
 const methodOverride = require("method-override");
 dotenv.config();
+const JobApp = require("./models/jobApp.js");
 
 // Instantiate express app
 const app = express();
@@ -20,6 +21,33 @@ db.on("connected", () => {
 
 // Middlewares
 app.use(logger("dev"));
-
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
+app.get("/", (req, res) => {
+  res.render("index.ejs", {
+    pageTitle: "Job Application Tracker",
+  });
+});
+
+app.get("/jobApps", async (req, res) => {
+  const jobApps = await JobApp.find();
+  res.render("./jobApps/index.ejs", {
+    pageTitle: "Job Applications",
+    jobApps,
+  });
+});
+
+app.get("/jobApps/new", (req, res) => {
+  res.render("./jobApps/new.ejs", {
+    pageTitle: "New Job Application",
+  });
+});
+
+app.post("/jobApps", async (req, res) => {
+  console.log(req.body);
+  await JobApp.create(req.body);
+  res.redirect("/jobApps");
+});
