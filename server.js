@@ -51,7 +51,16 @@ app.get("/jobApps/:id", async (req, res) => {
   const jobApp = await JobApp.findById(req.params.id);
   console.log(jobApp);
   res.render("./jobApps/show.ejs", {
-    pageTitle: `${jobApp.title} (${jobApp.company})`,
+    pageTitle: `View Job App`,
+    jobApp,
+  });
+});
+
+app.get("/jobApps/:id/edit", async (req, res) => {
+  const jobApp = await JobApp.findById(req.params.id);
+  console.log(jobApp);
+  res.render("./jobApps/edit.ejs", {
+    pageTitle: "Edit Job App",
     jobApp,
   });
 });
@@ -65,4 +74,10 @@ app.post("/jobApps", async (req, res) => {
 app.delete("/jobApps/:id", async (req, res) => {
   await JobApp.findByIdAndDelete(req.params.id);
   res.redirect("/jobApps");
+});
+
+app.put("/jobApps/:id", async (req, res) => {
+  console.log(req.body);
+  await JobApp.findByIdAndUpdate(req.params.id, req.body);
+  res.redirect(`/jobApps/${req.params.id}`);
 });

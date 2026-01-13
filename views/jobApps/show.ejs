@@ -17,6 +17,7 @@
       <li>Job Title: <%= jobApp.title %></li>
       <li>Status: <%= jobApp.status %></li>
     </ul>
+    <a href="/jobApps/<%=jobApp._id%>/edit">Edit Application</a>
     <form action="/jobApps/<%=jobApp._id%>?_method=DELETE" method="POST">
       <button type="submit">Delete Application</button>
     </form>

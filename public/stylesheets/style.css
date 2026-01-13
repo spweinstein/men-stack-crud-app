@@ -1,3 +1,15 @@
 h1 {
   color: orange;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  background-color: rgba(255, 228, 196, 0.3);
+  padding: 4px;
+}
