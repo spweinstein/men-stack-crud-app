@@ -6,6 +6,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 dotenv.config();
 const JobApp = require("./models/jobApp.js");
+const jobApp = require("./models/jobApp.js");
 
 // Instantiate express app
 const app = express();
@@ -46,8 +47,22 @@ app.get("/jobApps/new", (req, res) => {
   });
 });
 
+app.get("/jobApps/:id", async (req, res) => {
+  const jobApp = await JobApp.findById(req.params.id);
+  console.log(jobApp);
+  res.render("./jobApps/show.ejs", {
+    pageTitle: `${jobApp.title} (${jobApp.company})`,
+    jobApp,
+  });
+});
+
 app.post("/jobApps", async (req, res) => {
   console.log(req.body);
   await JobApp.create(req.body);
+  res.redirect("/jobApps");
+});
+
+app.delete("/jobApps/:id", async (req, res) => {
+  await JobApp.findByIdAndDelete(req.params.id);
   res.redirect("/jobApps");
 });
