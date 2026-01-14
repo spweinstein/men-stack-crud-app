@@ -1,0 +1,97 @@
+.job-list {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.job-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: var(--border);
+  border-radius: var(--radius);
+  background: white;
+  transition: box-shadow 0.2s;
+}
+
+.job-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-info {
+  flex: 1;
+}
+
+.job-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.job-info .company {
+  margin: 0 0 8px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.job-meta {
+  display: flex;
+  gap: 8px;
+}
+
+.status,
+.priority {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-applied {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+.status-interviewing {
+  background: #fff3e0;
+  color: #f57c00;
+}
+.status-offer {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+.status-rejected {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.priority-low {
+  background: #f5f5f5;
+  color: #757575;
+}
+.priority-medium {
+  background: #fff9c4;
+  color: #f57f17;
+}
+.priority-high {
+  background: #ffcdd2;
+  color: #c62828;
+}
+
+.btn-view {
+  padding: 8px 16px;
+  background: white;
+  color: #ff8c00;
+  border: 2px solid #ff8c00;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-view:hover {
+  background: #ff8c00;
+  color: white;
+}

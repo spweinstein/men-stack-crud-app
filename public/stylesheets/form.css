@@ -1,0 +1,90 @@
+form {
+  display: grid;
+  gap: var(--gap);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: var(--label-w) 1fr;
+  align-items: center;
+  gap: var(--gap);
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+input,
+select {
+  width: 100%;
+  /* max-width: 300px; */
+  font: inherit;
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 0px 8px;
+  box-sizing: border-box;
+  caret-color: orange;
+  border-color: orange;
+  background-color: rgba(255, 165, 0, 0.1);
+}
+
+input:focus {
+  border: 2px solid orange;
+  outline: none;
+}
+
+input,
+select {
+  height: var(--control-h);
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-start;
+  /* padding-left: calc(var(--label-w) + var(--gap)); lines up with inputs */
+}
+
+button {
+  font: inherit;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: var(--border);
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .field {
+    grid-template-columns: 1fr;
+  }
+  .actions {
+    padding-left: 0;
+    justify-content: stretch;
+  }
+  .actions button {
+    flex: 1;
+  }
+}
+
+/* Checkbox-specific styling */
+input[type="checkbox"] {
+  width: var(--control-h);
+  height: var(--control-h);
+  cursor: pointer;
+  accent-color: orange;
+  justify-self: start;
+}
+
+/* Better alignment for checkbox fields */
+.field:has(input[type="checkbox"]) {
+  align-items: center;
+}
+
+/* Optional: make the label clickable for better UX */
+.field:has(input[type="checkbox"]) label {
+  cursor: pointer;
+}

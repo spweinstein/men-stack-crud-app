@@ -67,6 +67,7 @@ app.get("/jobApps/:id/edit", async (req, res) => {
 
 app.post("/jobApps", async (req, res) => {
   console.log(req.body);
+  req.body.archived = req.body.archived === "on" ? true : false;
   await JobApp.create(req.body);
   res.redirect("/jobApps");
 });
@@ -78,6 +79,7 @@ app.delete("/jobApps/:id", async (req, res) => {
 
 app.put("/jobApps/:id", async (req, res) => {
   console.log(req.body);
+  req.body.archived = req.body.archived === "on" ? true : false;
   await JobApp.findByIdAndUpdate(req.params.id, req.body);
   res.redirect(`/jobApps/${req.params.id}`);
 });

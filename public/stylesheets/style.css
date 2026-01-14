@@ -1,5 +1,27 @@
+:root {
+  --gap: 4px;
+  --label-w: 140px; /* consistent label column width */
+  --control-h: 20px; /* consistent input height */
+  --radius: 10px;
+  --border: 1px solid #d0d5dd;
+  box-sizing: border-box;
+}
+
 h1 {
   color: orange;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+/* .content a, */
+.content form {
+  text-align: center;
+  margin: 0 auto;
 }
 
 nav {
@@ -12,86 +34,4 @@ nav a {
   color: black;
   background-color: rgba(255, 228, 196, 0.3);
   padding: 4px;
-}
-
-:root {
-  --gap: 12px;
-  --label-w: 140px; /* consistent label column width */
-  --control-h: 40px; /* consistent input height */
-  --radius: 10px;
-  --border: 1px solid #d0d5dd;
-}
-
-form {
-  display: grid;
-  gap: var(--gap);
-  max-width: 720px;
-}
-
-form > div {
-  display: grid;
-  grid-template-columns: var(--label-w) 1fr;
-  align-items: center;
-  gap: var(--gap);
-}
-
-label {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  font: inherit;
-  border: var(--border);
-  border-radius: var(--radius);
-  padding: 10px 12px;
-  box-sizing: border-box;
-}
-
-input,
-select {
-  height: var(--control-h);
-}
-
-textarea {
-  min-height: calc(var(--control-h) * 2);
-  resize: vertical;
-}
-
-/* Make textarea align to top of its label */
-.field:has(textarea) {
-  align-items: start;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  padding-left: calc(var(--label-w) + var(--gap)); /* lines up with inputs */
-}
-
-button {
-  font: inherit;
-  padding: 10px 14px;
-  border-radius: var(--radius);
-  border: var(--border);
-  cursor: pointer;
-}
-
-/* Responsive: stack on small screens */
-@media (max-width: 560px) {
-  .field {
-    grid-template-columns: 1fr;
-  }
-  .actions {
-    padding-left: 0;
-    justify-content: stretch;
-  }
-  .actions button {
-    flex: 1;
-  }
 }
